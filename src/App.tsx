@@ -109,9 +109,12 @@ function App() {
     setChatMessages(prev => [...prev, { id: uuidv4(), type: 'assistant', content: "Great job! Let me listen to your recording... 🧐", timestamp: new Date() }]);
 
     try {
+      // Convert audioBlob to ArrayBuffer for function invocation
+      const arrayBuffer = await audioBlob.arrayBuffer();
+
       // 1. Get transcript from AssemblyAI via Supabase Edge Function
       const { data, error: functionError } = await supabase.functions.invoke('transcribe-audio', {
-        body: audioBlob,
+        body: arrayBuffer,
       });
 
       if (functionError) throw functionError;
@@ -179,7 +182,7 @@ function App() {
     setTimeout(() => {
       let assistantResponse: ChatMessage;
       if (message.toLowerCase().includes('help me with the word')) {
-        const word = message.match(/"([^"]+)"/)?.[1] || 'word';
+        const word: string = message.match(/"([^"]+)"/)?.[1] || 'word';
         assistantResponse = { id: uuidv4(), type: 'assistant', content: `You got it! Let's look at the word "${word}".`, timestamp: new Date(), feedback: { corrections: [], pronunciation: [word], suggestions: [`Try saying it slowly: "${word}". Click the word to hear it!`, 'You can do it!'] } };
       } else {
         assistantResponse = { id: uuidv4(), type: 'assistant', content: 'I\'m listening! Ask me anything about pronunciation or words. I\'m here to cheer you on! 🦊', timestamp: new Date() };
