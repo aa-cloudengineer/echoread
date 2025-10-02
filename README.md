@@ -6,7 +6,7 @@ EchoRead is a fun and interactive web application designed to help students impr
 
 The app combines a playful, modern interface with powerful learning tools, creating an encouraging environment for readers of all levels.
 
-![EchoRead App Preview](https://echoread.netlify.app/)
+[EchoRead App Preview](https://echoread.netlify.app/)
 
 ## ✨ Features
 
@@ -65,5 +65,4 @@ The application will be available at `http://localhost:5173`.
 ---
 
 Built with ❤️ by Dualite Alpha.
-
 
