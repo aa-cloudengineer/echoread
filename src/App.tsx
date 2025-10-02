@@ -165,8 +165,8 @@ function App() {
       console.error("Error completing session:", error);
       const errorMessage: ChatMessage = { id: uuidv4(), type: 'assistant', content: `Oops! There was an error analyzing your audio. ${error.message || 'Please try again.'}`, timestamp: new Date() };
       setChatMessages(prev => [...prev, errorMessage]);
-    } finally {
       setCurrentView('dashboard');
+    } finally {
       setIsAnalyzing(false);
     }
   };
