@@ -5,6 +5,7 @@
 EchoRead is a fun and interactive web application designed to help students improve their English reading fluency. Guided by our friendly mascot, **Uztaz the Clever Fox**, students can practice reading, record their voice, and receive AI-powered feedback to build confidence and skill.
 
 The app combines a playful, modern interface with powerful learning tools, creating an encouraging environment for readers of all levels.
+
 [EchoRead App Preview](https://echoread.netlify.app/)
 
 ## ✨ Features
