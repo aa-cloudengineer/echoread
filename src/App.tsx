@@ -161,11 +161,13 @@ function App() {
       const congratsMessage: ChatMessage = { id: uuidv4(), type: 'assistant', content: `Wow! Based on my analysis, you read "${currentStory?.title}" with ${score}% accuracy and earned 50 XP! You're doing amazing!`, timestamp: new Date(), feedback: { corrections: [], pronunciation: [], suggestions: ['You read that so smoothly!', 'Keep up the fantastic work!', 'Ready for another story?'] } };
       setChatMessages(prev => [...prev, congratsMessage]);
 
+      // Navigate back to dashboard after showing feedback
+      setTimeout(() => setCurrentView('dashboard'), 5000);
+
     } catch(error: any) {
       console.error("Error completing session:", error);
       const errorMessage: ChatMessage = { id: uuidv4(), type: 'assistant', content: `Oops! There was an error analyzing your audio. ${error.message || 'Please try again.'}`, timestamp: new Date() };
       setChatMessages(prev => [...prev, errorMessage]);
-      setCurrentView('dashboard');
     } finally {
       setIsAnalyzing(false);
     }
